@@ -1,3 +1,2 @@
-require("config")
-
-vim.wo.relativenumber = true
+require("tepdock.config")
+require("tepdock.lazy")
