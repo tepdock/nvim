@@ -9,48 +9,66 @@ return {
     vim.g.loaded_netrwPlugin = 1
 
     nvimtree.setup({
-      view = {
-        width = 35,
-        relativenumber = true,
-      },
-      -- change folder arrow icons
-      renderer = {
-        indent_markers = {
-          enable = true,
-        },
-        icons = {
-          glyphs = {
-            folder = {
-              arrow_closed = "", -- arrow when folder is closed
-              arrow_open = "", -- arrow when folder is open
-            },
+       view = {
+          width = 35,
+          relativenumber = true,
+       },
+       -- change folder arrow icons
+       renderer = {
+          indent_markers = {
+             enable = true,
           },
-        },
-      },
-      -- disable window_picker for
-      -- explorer to work well with
-      -- window splits
-      actions = {
-        open_file = {
-          window_picker = {
-            enable = false,
+          icons = {
+             glyphs = {
+                git = {
+                   unstaged = "U",
+                   staged = "S",
+                   unmerged = "",
+                   renamed = "➜",
+                   untracked = "",
+                   deleted = "",
+                   ignored = "◌",
+                },
+             },
           },
-        },
-      },
-      filters = {
-        custom = { ".DS_Store" },
-      },
-      git = {
-        ignore = false,
-      },
+       },
+
+       diagnostics = {
+          enable = false,
+          show_on_dirs = false,
+          show_on_open_dirs = true,
+          debounce_delay = 50,
+          severity = {
+             min = vim.diagnostic.severity.HINT,
+             max = vim.diagnostic.severity.ERROR,
+          },
+          icons = {
+             hint = "",
+             info = "",
+             warning = "",
+             error = "",
+          },
+       },
+
+       -- disable window_picker for
+       -- explorer to work well with
+       -- window splits
+       actions = {
+          open_file = {
+             window_picker = {
+                enable = false,
+             },
+          },
+       },
     })
 
     -- set keymaps
-    local keymap = vim.keymap -- for conciseness
+    local keymap = vim.keymap.set 
 
-    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-    keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+    keymap("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "toggle file explorer" }) -- toggle file explorer
+    keymap("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "toggle file explorer on current file" }) -- toggle file explorer on current file
+    keymap("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "collapse file explorer" }) -- collapse file explorer
+    keymap("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "refresh file explorer" }) -- refresh file explorer
+    keymap("n", "<leader>ea", "<cmd>NvimTreeRefresh<CR>", { desc = "add file in explorer" }) -- refresh file explorer
  end
 }
