@@ -11,7 +11,7 @@ return {
       require("telescope").setup {
          extensions = {
             file_browser = {
-               depth = 2,
+               depth = 1,
                auto_depth = true,
                hidden = { file_browser = true, folder_browser = true },
                hide_parent_dir = false,
