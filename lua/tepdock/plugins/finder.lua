@@ -5,6 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-tree/nvim-web-devicons",
+    "folke/todo-comments.nvim", 
   },
   config = function()
     local telescope = require("telescope")
@@ -28,9 +29,11 @@ return {
     local keymap = vim.keymap.set
     local builtin = require('telescope.builtin')
 
-    keymap('n', '<leader>pf', builtin.find_files, { desc = "find in dir" })
-    keymap('n', '<C-p>', builtin.git_files, { desc = "find in git files" })
-    keymap('n', '<leader>ps', builtin.grep_string, { desc = "find text" })
-    keymap("n", "<leader>po", builtin.oldfiles, { desc = "find recent files" })
-  end,
+      keymap('n', '<leader>pf', builtin.find_files, { desc = "find in dir" })
+      keymap('n', '<C-p>', builtin.git_files, { desc = "find in git files" })
+      keymap('n', '<leader>ps', builtin.live_grep, { desc = "find text in all files" })  
+      keymap('n', '<leader>pw', builtin.grep_string, { desc = "find text" })
+      keymap("n", "<leader>po", builtin.oldfiles, { desc = "find recent files" })
+      keymap("n", "<leader>pt", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+end,
 }
