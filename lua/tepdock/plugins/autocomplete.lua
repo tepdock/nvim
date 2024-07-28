@@ -15,7 +15,7 @@ return {
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
             end,
-          },
+           },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -50,7 +50,7 @@ return {
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
-        { name = "nvim_lsp" },       
+        { name = "nvim_lsp" },
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
